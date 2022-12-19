@@ -22,6 +22,10 @@
                     <label>Price: ${product.price}</label> <br>
                     <label>Quantity: $ {product.quantity}</label>
                 </div>
+                <div class="d-flex">
+                    <input type="number" class="form-control">
+                    <button class="btn btn-primary ms-3">Offer</button>
+                </div>
             </div>
         </div>
     </div>
