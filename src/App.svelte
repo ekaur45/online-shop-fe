@@ -2,14 +2,12 @@
 	import Router from "svelte-spa-router";
 	import Authguard from './auth/Authguard.svelte';
 	import routes from "./routes";
-	import publicroutes from "./public.routes";
 	import {auth} from './authStore';
 
-	let login = ()=>{
-		$auth.signin(()=>{});
 
+	const logoutApplication = ()=>{
+		$auth.signout();
 	}
-	
 </script>
 
 <div id="app">
@@ -30,15 +28,16 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
+					{#if $auth.user?.userType == "admin"}						
 					<li class="nav-item">
-						<a
-							class="nav-link"
-							aria-current="page"
-							href="#/products">Products</a
-						>
+						<a class="nav-link" href="#/products">Products</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#/offers">Offers</a>
+					</li>
+					{/if}
+					<li class="nav-item">
+						<a class="nav-link" on:click={logoutApplication} href="javascript:void(0);">Logout</a>
 					</li>
 				</ul>
 			</div>
